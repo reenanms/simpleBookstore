@@ -8,8 +8,7 @@
 # livro/ID: get
 # livro: get (retorna todos)
 
-from database.session import *
-from entities.livro import Livro
+from controllers.livroController import LivroController
 
 from flask import Flask
 from flask import jsonify
@@ -18,12 +17,13 @@ app = Flask(__name__)
 
 
 
-@app.route('/')
+@app.route('/livro')
 def getAllBooks():
-    session = NewSession()
-    livros = session.query(Livro).all()
+    controller = LivroController()
+    livros = controller.getAll()
     return jsonify([{
         "id": livro.id,
         "titulo": livro.titulo,
-        "autor": livro.autor
+        "autor": livro.autor,
+        "preco": livro.preco
     } for livro in livros])
