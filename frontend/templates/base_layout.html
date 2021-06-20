@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt">
     <head>
-        <title>Your Simple Book Store</title>
+        <title>Livraria Virtual</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     </head>
@@ -9,11 +9,18 @@
 
         <div class="container">
             <header class="d-flex justify-content-center py-3">
+                <h1> Livraria Virtual </h1>
+            </header>
+        </div>
+
+
+         <div class="container">
+            <header class="d-flex justify-content-center py-3">
               <ul class="nav nav-pills">
-                <li class="nav-item"><a href="livros" class="nav-link + {{'active' if active_page == 'livros'}}" >Livros</a></li>
-                <li class="nav-item"><a href="about" class="nav-link + {{'active' if active_page == 'about'}}">Sobre Nós</a></li>
-                <li class="nav-item"><a href="carrinho" class="nav-link + {{'active' if active_page == 'carrinho'}}">Carrinho</a></li>
-                <li class="nav-item"><a href="vendedor" class="nav-link + {{'active' if active_page == 'vendedor'}}">Acesso Vendedor</a></li>
+                <li class="nav-item "><a href="books" class="nav-link + {{'active' if active_page == 'books'}}" >Livros</a></li>
+                <li class="nav-item "><a href="about" class="nav-link + {{'active' if active_page == 'about'}}">Sobre Nós</a></li>
+                <li class="nav-item "><a href="carrinho" class="nav-link + {{'active' if active_page == 'carrinho'}}">Carrinho</a></li>
+                <li class="nav-item "><a href="vendedor" class="nav-link + {{'active' if active_page == 'vendedor'}}">Acesso Vendedor</a></li>
               </ul>
             </header>
         </div>
@@ -22,4 +29,6 @@
         {% block content %}{% endblock %}
 
     </body>
+
+
 </html>

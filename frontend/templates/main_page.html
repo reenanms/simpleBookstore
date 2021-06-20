@@ -1,9 +1,16 @@
 {% extends "base_layout.html" %}
-{% set active_page = "livros" %}
+{% set active_page = "books" %}
 
 {% block content %}
-    <h1>Hi, {{ user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+
+    <div class="card text-center text-dark border-light" style="width: 18rem;">
+        <img src="https://practicelanguagesonline.files.wordpress.com/2021/02/top-10-books-every-college-student-read-1024x640-1.jpeg?w=810&h=580&crop=1" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">O Hobbit</h5>
+            <h6 class="card-subtitle">R$45,00</h6>
+            <p class="card-text">Nome do livro, autor e ano de publicação.</p>
+            <a href="#" class="btn btn-primary btn-dark">Comprar</a>
+        </div>
+    </div>
+
 {% endblock %}

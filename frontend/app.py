@@ -2,22 +2,10 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
 @app.route('/')
-@app.route('/livros')
+@app.route('/books')
 def main_page():
-    user = {'username': 'Miguel'}
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    return render_template('main_page.html', user=user, posts=posts)
+    return render_template('main_page.html')
 
 @app.route('/about')
 def about_page():
