@@ -2,13 +2,41 @@
 {% set active_page = "vendedor" %}
 
 {% block content %}
-    <h2>Vendedor</h2>
+    <h4>Área do vendedor</h4>
     <hr>
 
-    <p>
-        Vendedor
-    </p>
+    <div class="container">
+
+        <div class="card text-dark border-secundary">
+            <div class="card-header"> <b>Pedidos</b>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Realize o acompanhamento dos pedidos.</p>
+                <a href="pedidos" class="btn btn-primary btn-dark">Pedidos</a>
+            </div>
+        </div>
+        <br/>
+
+        <div class="card text-dark border-secundary">
+            <div class="card-header"> <b>Cadastro de produtos </b>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Realize o cadastro de novos produtos.</p>
+                <a href="cadastro" class="btn btn-primary btn-dark">Cadastrar</a>
+            </div>
+        </div>
+        <br/>
+
+        <div class="card text-dark border-secundary">
+            <div class="card-header"> <b>Entrada manual de produtos</b>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Realize a entrada manual de produtos para o estoque.</p>
+                <a href="#" class="btn btn-primary btn-dark">Entrada manual</a>
+            </div>
+        </div>
+    </div>
+    <br/>
 
     <hr>
-
 {% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base_layout.html" %}
+{% set active_page = "cadastar_livro" %}
+
+{% block content %}
+    <h4>Cadastro</h4>
+    <hr>
+
+    <div class="container">
+        <form>
+          <div class="mb-3">
+              <label for="cadastro_livro_titulo" class="form-label"><b>Título</b></label>
+              <input type="text" class="form-control" id="cadastro_livro_titulo">
+              <div id="cadastro_livro" class="form-text">Insira o título do livro</div>
+          </div>
+          <div class="mb-3">
+              <label for="cadastro_livro_isbn" class="form-label"><b>ISBN</b></label>
+              <input type="text" class="form-control" id="cadastro_livro_isbn">
+              <div class="form-text">Insira o ISBN do livro</div>
+          </div>
+          <div class="mb-3">
+              <label for="cadastro_livro_autor" class="form-label"><b>Autor</b></label>
+              <input type="text" class="form-control" id="cadastro_livro_autor">
+              <div class="form-text">Insira o autor do livro</div>
+          </div>
+          <div class="mb-3">
+              <label for="cadastro_livro_ano" class="form-label"><b>Ano publicação</b></label>
+              <input type="text" class="form-control" id="cadastro_livro_ano">
+              <div class="form-text">Insira o ano de publicação do livro</div>
+          </div>
+          <div class="mb-3">
+              <label for="cadastro_livro_preco" class="form-label"><b>Preço</b></label>
+              <input type="text" class="form-control" id="cadastro_livro_preco">
+              <div class="form-text">Insira o preço do livro</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-dark">Cadastrar</button>
+        </form>
+    </div>
+
+    <hr>
+{% endblock %}

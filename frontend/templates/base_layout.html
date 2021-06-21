@@ -10,7 +10,7 @@
     <div class="d-flex flex-column">
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom shadow-sm mb-3">
         <div class="container">
-            <a class="navbar-brand" href="/"><b>Livraria Virtual</b></a>
+            <a class="navbar-brand" href="/"><h2>Livraria Virtual</h2></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,31 +22,35 @@
                     <li class="nav-item">
                         <a href="sobre" class="nav-link text-white+ {{'active' if active_page == 'sobre'}}">Sobre</a>
                     </li>
-                </ul>
-            </div>
-            <div class="align-self-end">
-                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a href="carrinho" class="nav-link text-white+ {{'active' if active_page == 'carrinho'}}">Carrinho</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-nav flex-grow-1 align-self-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="vendedor" class="nav-link text-white+ {{'active' if active_page == 'vendedor'}}">Área do vendedor</a>
                     </li>
                 </ul>
             </div>
         </div>
      </nav>
 
-        <main class="flex-fill">
-            <div class="container">
-                {% block content %}{% endblock %}
-            </div>
-        </main>
+     <main class="flex-fill">
+         <div class="container">
+            {% block content %}{% endblock %}
+         </div>
+     </main>
 
-     <footer class="border-top text-dark bg-light">
+     <footer class="footer border-top text-left text-dark bg-light">
          <div class="container">
             <div class="row py-3">
-                <div class="align-self-end">
-                    &copy; Livraria Virtual - 2021 <br>
-                    <a href="vendedor" class="text-decoration-none text-dark"><b>Acesso vendedor</b></a><br>
-                    <a href="sobre" class="text-decoration-none text-dark"><b>Sobre</b></a><br>
+                <div class="col-10">
+                    <b>&copy; Livraria Virtual - 2021 </b><br>
+                    Inserir dados de contato <br>
+                    (Colocar os dados no canto esquedo) <br>
+                    (Fixar no final da página) <br>
                 </div>
             </div>
          </div>

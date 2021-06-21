@@ -16,9 +16,16 @@ def car_page():
     return render_template('carrinho.html')
 
 @app.route('/vendedor')
-def login_vendedor():
+def acesso_vendedor():
     return render_template('acesso_vendedor.html')
 
+@app.route('/pedidos')
+def pedidos():
+    return render_template('pedidos.html')
+
+@app.route('/cadastro')
+def cadastro_livro():
+    return render_template('cadastro_livro.html')
 
 if __name__ == '__main__':
     app.run()

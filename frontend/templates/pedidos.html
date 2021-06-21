@@ -1,0 +1,32 @@
+{% extends "base_layout.html" %}
+{% set active_page = "pedidos" %}
+
+{% block content %}
+    <h4>Pedidos</h4>
+    <hr>
+
+    <div class="card text-dark border-secundary">
+        <div class="card-header"> <b>Pedido 001</b>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Produto 1</p>
+            <p class="card-text">Produto 2</p>
+            <p class="card-text">Produto 3</p>
+            <a href="#" class="btn btn-primary btn-dark">Enviar</a>
+        </div>
+    </div>
+    <br/>
+
+    <div class="card text-dark border-secundary">
+        <div class="card-header"> <b>Pedido 002</b>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Produto 1</p>
+            <p class="card-text">Produto 2</p>
+            <a href="#" class="btn btn-primary btn-dark">Enviar</a>
+        </div>
+    </div>
+    <br/>
+
+    <hr>
+{% endblock %}
