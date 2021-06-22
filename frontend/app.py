@@ -1,11 +1,13 @@
 from flask import Flask, render_template
+import method as mt
 
 app = Flask(__name__)
 
 @app.route('/')
 @app.route('/livros')
 def main_page():
-    return render_template('main_page.html')
+    livros = mt.get_livros()
+    return render_template('main_page.html', livros=livros)
 
 @app.route('/sobre')
 def about_page():
