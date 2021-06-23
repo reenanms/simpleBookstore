@@ -75,7 +75,7 @@ DELIMITER /descontaEstoque/
 		
 		UPDATE livro
 		SET quantidadeEstoque = @novaQuanttidade
-		WHERE l.id = NEW.idLivro;
+		WHERE id = NEW.idLivro;
 
 	END; /descontaEstoque/
 DELIMITER ;
@@ -108,7 +108,7 @@ DELIMITER /updateEstoque/
 														
 		UPDATE livro
 		SET quantidadeEstoque = @novaQuanttidade
-		WHERE l.id = NEW.idLivro;
+		WHERE id = NEW.idLivro;
 	END; /updateEstoque/
 DELIMITER ;
 
@@ -122,7 +122,7 @@ DELIMITER /incrementaEstoque/
 		
 		UPDATE livro
 		SET quantidadeEstoque = @novaQuanttidade
-		WHERE l.id = OLD.idLivro;
+		WHERE id = OLD.idLivro;
 
 	END; /incrementaEstoque/
 DELIMITER ;
@@ -137,3 +137,4 @@ VALUES
 ('7894563215511', 'Harry Potter e a Câmara Secreta', 'J.K. Rowling ', 2017, 5, 15.90, 1),
 ('7894563215512', 'Harry Potter e o prisioneiro de Azkaban', 'J.K. Rowling ', 2017, 2, 20.90, 1);
 
+livro
