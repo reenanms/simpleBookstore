@@ -14,7 +14,8 @@ CORS(app)
 @app.route('/livros')
 def main_page():
     livros = mt.get_livros()
-    return render_template('main_page.html', livros=livros)
+    topvendas = mt.get_topvendas()
+    return render_template('main_page.html', livros=livros, topvendas=topvendas)
 
 
 @app.route('/sobre')

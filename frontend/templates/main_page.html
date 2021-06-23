@@ -3,24 +3,42 @@
 
 {% block content %}
 
-    <div class="container text-dark text-center">
-        <h2>Inserir alguma coisa aqui</h2>
-    </div>
 
-     <hr>
-    <div class="card-columns">
-        {% for livro in livros %}
-        <div class="card text-center text-dark border-secundary" style="width: 18rem;">
-            <img src="https://practicelanguagesonline.files.wordpress.com/2021/02/top-10-books-every-college-student-read-1024x640-1.jpeg?w=810&h=580&crop=1" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{livro.titulo}}</h5>
-                <h6 class="card-subtitle">R$ {{ livro.preco }}</h6>
-                <p class="card-text">{{livro.titulo}}, {{ livro.autor}} e ano de publicação.</p>
-                <a class="btn btn-primary btn-dark" href="{{ url_for('add_car', livroId = livro.id)}}" method="post">Adicionar ao carrinho</a>
-            </div>
-        </div>
-        {% endfor %}
+    <div class="container text-dark text-center">
+        <h2>Livros top vendas</h2>
     </div>
+    <hr>
+        <div class="card-columns">
+            {% for top in topvendas %}
+            <div class="card text-center text-dark border-secundary">
+                <img src="https://practicelanguagesonline.files.wordpress.com/2021/02/top-10-books-every-college-student-read-1024x640-1.jpeg?w=810&h=580&crop=1" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{top.titulo}}</h5>
+                    <p class="card-text">{{top.autor}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    <hr>
+
+
+    <div class="container text-dark text-center">
+        <h2>Todos os livros disponível</h2>
+    </div>
+    <hr>
+        <div class="card-columns row-cols-3">
+            {% for livro in livros %}
+            <div class="card text-center text-dark border-secundary" >
+                <img src="https://practicelanguagesonline.files.wordpress.com/2021/02/top-10-books-every-college-student-read-1024x640-1.jpeg?w=810&h=580&crop=1" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{livro.titulo}}</h5>
+                    <h6 class="card-subtitle">R$ {{livro.preco}}</h6>
+                    <p class="card-text">{{livro.autor}},{{livro.anoPublicacao}}.</p>
+                    <a class="btn btn-primary btn-dark" href="{{ url_for('add_car', livroId = livro.id)}}" method="post">Adicionar ao carrinho</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     <hr>
 
 {% endblock %}
