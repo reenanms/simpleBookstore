@@ -81,10 +81,17 @@ def get_topvendas():
     return topvendas
 
 
+def get_pedido_id():
+    r = requests.post(url=URL + '/pedido')
+    pedido = r.json()
+    print(pedido.id)
+    return (pedido.id)
+
+
 def add_pedido(id):
-    #fazer post do livro
+    r = requests.post(url = URL + '/pedido/' + session.get('pedidoId') + '/add/' + id)
+    ok = r.json()
+    print(ok)
     return 'ok'
 
-def get_pedido_id():
-    #fazer get do id do pedido
-    return ('1')
+
