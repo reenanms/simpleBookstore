@@ -10,7 +10,6 @@
      <hr>
     <div class="card-columns">
         {% for livro in livros %}
-        {% if livro.estoque=='1' %}
         <div class="card text-center text-dark border-secundary" style="width: 18rem;">
             <img src="https://practicelanguagesonline.files.wordpress.com/2021/02/top-10-books-every-college-student-read-1024x640-1.jpeg?w=810&h=580&crop=1" class="card-img-top" alt="...">
             <div class="card-body">
@@ -20,7 +19,6 @@
                 <a href="#" class="btn btn-primary btn-dark">Comprar</a>
             </div>
         </div>
-        {% endif %}
         {% endfor %}
     </div>
     <hr>
