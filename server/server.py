@@ -29,10 +29,28 @@ def getAllLivros():
     livros = controller.getAll()
     return jsonify(livros)
 
+@app.route('/livro/maisVendidos', methods=['GET'])
+def getAllMaisVendidos():
+    controller = LivroController()
+    livros = controller.getMaisVendidos()
+    return jsonify(livros)
+
 @app.route('/livro/<id>', methods=['GET'])
 def getLivro(id):
     controller = LivroController()
     livro = controller.get(id)
+    return jsonify(livro)
+
+@app.route('/livro', methods=['POST'])
+def createLivro():
+    isbn = request.json['isbn']
+    titulo = request.json['titulo']
+    autor = request.json['autor']
+    anoPublicacao = request.json['anoPublicacao']
+    estoque = request.json['estoque']
+    preco = request.json['preco']
+    controller = LivroController()
+    livro = controller.create(isbn, titulo, autor, anoPublicacao, estoque, preco)
     return jsonify(livro)
 
 
@@ -41,6 +59,12 @@ def getLivro(id):
 def getAllPedidos():
     controller = PedidoController()
     pedidos = controller.getAll()
+    return jsonify(pedidos)
+
+@app.route('/pedido/finalizados', methods=['GET'])
+def getAllFinalizados():
+    controller = PedidoController()
+    pedidos = controller.getAllFinalizados()
     return jsonify(pedidos)
 
 @app.route('/pedido', methods=['POST'])
@@ -72,6 +96,13 @@ def setClientePedido(id, cpf):
     controller = PedidoController()
     controller.setCliente(id, cpf)
     return ""
+
+@app.route('/pedido/<id>/finalizar', methods=['POST'])
+def finalizarPedido(id):
+    controller = PedidoController()
+    controller.finalizar(id)
+    return ""
+
 
 
 

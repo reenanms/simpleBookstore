@@ -127,6 +127,17 @@ DELIMITER /incrementaEstoque/
 	END; /incrementaEstoque/
 DELIMITER ;
 
+CREATE VIEW livrosMaisVendidos AS
+SELECT l.autor, l.titulo, SUM(pl.quantidade) quantidade
+FROM pedidoLivro pl
+INNER JOIN pedido p
+	ON p.id = pl.idPedido
+INNER JOIN livro l
+	ON l.id = pl.idLivro
+WHERE p.confirmacaoPagamento = 1
+GROUP BY pl.idLivro
+ORDER BY quantidade DESC
+LIMIT 3;
 
 
 INSERT INTO livro (isbn,titulo, autor, anoPublicacao, quantidadeEstoque, preco, ativo)
@@ -136,5 +147,3 @@ VALUES
 ('7894563215510', 'Harry Potter e a pedra filosofal', 'J.K. Rowling ', 2017, 5, 10.90, 1),
 ('7894563215511', 'Harry Potter e a Câmara Secreta', 'J.K. Rowling ', 2017, 5, 15.90, 1),
 ('7894563215512', 'Harry Potter e o prisioneiro de Azkaban', 'J.K. Rowling ', 2017, 2, 20.90, 1);
-
-livro
