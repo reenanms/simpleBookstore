@@ -48,7 +48,7 @@ def add_car(livroId):
     if not session.get('pedidoId'):
         session['pedidoId'] = mt.get_pedido_id()
     if session.get('pedidoId'):
-        if mt.add_pedido(livroId) == 'ok':
+        if mt.add_pedido(livroId) == 200:
             print('Adicionado ao pedido com sucesso')
         else:
             print('PROBLEMA ao adicionar ao pedido')

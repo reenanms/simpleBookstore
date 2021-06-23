@@ -90,8 +90,5 @@ def get_pedido_id():
 
 def add_pedido(id):
     r = requests.post(url = URL + '/pedido/' + session.get('pedidoId') + '/add/' + id)
-    ok = r.json()
-    print(ok)
-    return 'ok'
-
+    return r.status_code
 
