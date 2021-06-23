@@ -6,15 +6,14 @@ from entities.pedidoLivro import PedidoLivro
 from entities.livro import Livro
 
 
-import sys
-
 class PedidoController:
     def __init__(self):
         return
 
     def mapPedidoSimples(self, pedido):
          return {
-            "id": pedido.id
+            "id": pedido.id,
+            "dataPedido": pedido.dataPedido
          }
 
     def mapPedido(self, pedido, cliente, pedidoLivros):
@@ -45,6 +44,12 @@ class PedidoController:
     def getAll(self):
         session = NewSession()
         pedidos = session.query(Pedido).all()
+        return [self.mapPedidoSimples(pedido)
+            for pedido in pedidos]
+
+    def getAllFinalizados(self):
+        session = NewSession()
+        pedidos = session.query(Pedido).filter(Pedido.confirmacaoPagamento == True)
         return [self.mapPedidoSimples(pedido)
             for pedido in pedidos]
 
@@ -117,5 +122,19 @@ class PedidoController:
             raise Exception(f"Cliente com cpf {cpf} não existe")
 
         pedido.idCliente = cliente.id
+
+        session.commit()
+
+    def finalizar(self, id):
+        session = NewSession()
+
+        pedido = session.query(Pedido).get(id)
+        if (pedido is None):
+            raise Exception(f"Pedido {id} não existe")
+
+        if (pedido.idCliente is None):
+            raise Exception(f"Pedido não possui cliente")
+
+        pedido.confirmacaoPagamento = True
 
         session.commit()
