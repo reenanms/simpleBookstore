@@ -16,7 +16,7 @@
                 <h5 class="card-title">{{livro.titulo}}</h5>
                 <h6 class="card-subtitle">R$ {{ livro.preco }}</h6>
                 <p class="card-text">{{livro.titulo}}, {{ livro.autor}} e ano de publicação.</p>
-                <a href="#" class="btn btn-primary btn-dark">Comprar</a>
+                <a class="btn btn-primary btn-dark" href="{{ url_for('add_car', livroId = livro.id)}}" method="post">Adicionar ao carrinho</a>
             </div>
         </div>
         {% endfor %}
