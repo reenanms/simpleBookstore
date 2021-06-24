@@ -1,6 +1,7 @@
 import requests
 
-URL='http://localhost:3000'
+URL = 'http://localhost:3000'
+
 
 def get_livros():
     '''
@@ -10,22 +11,22 @@ def get_livros():
     return livros
     '''
     livros = [
-      {
-        "anoPublicacao": 2021,
-        "autor": "nome do autor",
-        "id": 1,
-        "isbn": "1234567890123",
-        "preco":  12,
-        "titulo": "titulo do livro 1"
-      },
-      {
-        "anoPublicacao": 2021,
-        "autor": "nome do autor",
-        "id": 3,
-        "isbn": "1234567890123",
-        "preco": 20,
-        "titulo": "titulo do livro 2"
-      },
+        {
+            "anoPublicacao": 2021,
+            "autor": "nome do autor",
+            "id": 1,
+            "isbn": "1234567890123",
+            "preco": 12,
+            "titulo": "titulo do livro 1"
+        },
+        {
+            "anoPublicacao": 2021,
+            "autor": "nome do autor",
+            "id": 3,
+            "isbn": "1234567890123",
+            "preco": 20,
+            "titulo": "titulo do livro 2"
+        },
         {
             "anoPublicacao": 2018,
             "autor": "nome do autor",
@@ -62,21 +63,21 @@ def get_topvendas():
     return top
     '''
     topvendas = [
-      {
-        "autor": "nome do autor",
-        "quantidade": 10,
-        "titulo": "titulo do livro mais vendido"
-      },
-      {
-        "autor": "nome do autor",
-        "quantidade": 8,
-        "titulo": "titulo do segundo livro mais vendido"
-      },
-      {
-        "autor": "nome do autor",
-        "quantidade": 8,
-        "titulo": "titulo do segundo livro mais vendido"
-      }
+        {
+            "autor": "nome do autor",
+            "quantidade": 10,
+            "titulo": "titulo do livro mais vendido"
+        },
+        {
+            "autor": "nome do autor",
+            "quantidade": 8,
+            "titulo": "titulo do segundo livro mais vendido"
+        },
+        {
+            "autor": "nome do autor",
+            "quantidade": 8,
+            "titulo": "titulo do segundo livro mais vendido"
+        }
     ]
     return topvendas
 
@@ -87,9 +88,11 @@ def get_pedido_id():
     print(pedido.id)
     return (pedido.id)
 
+
 def add_pedido(id):
-    r = requests.post(url = URL + '/pedido/' + session.get('pedidoId') + '/add/' + id)
+    r = requests.post(url=URL + '/pedido/' + session.get('pedidoId') + '/add/' + id)
     return r.status_code
+
 
 def get_car_itens(pedidoId):
     itens = [{
@@ -111,7 +114,12 @@ def get_car_itens(pedidoId):
 
     return itens
 
+
 def finalizar_pedido(pedidoId):
     r = requests.post(url=URL + '/pedido/' + pedidoId + '/finalizar')
     return r.status_code
 
+
+def remover_livro_pedido(livroId, sessionId):
+    r = requests.post(url=URL + '/pedido/' + sessionId + '/rem/' + livroId)
+    return r.status_code

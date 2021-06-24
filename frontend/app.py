@@ -66,6 +66,13 @@ def finalizar_pedido():
     session.pop(session.get('pedidoId'))
     return main_page()
 
+@app.route('/remover-livro-pedido/<livroId>')
+def retirar_item(livroId):
+    if mt.remover_livro_pedido(livroId, session.get('pedidoId')) == 200:
+        print('Livro removido')
+    else:
+        print('PROBLEMA ao remover o livro')
+    return car_page()
 
 if __name__ == '__main__':
     app.run()
