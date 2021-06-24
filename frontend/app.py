@@ -66,18 +66,18 @@ def add_car(livroId):
 @app.route('/finalizar-pedido')
 def finalizar_pedido():
     if mt.finalizar_pedido(session.get('pedidoId')) == 200:
-        print('Pedido Finalizado com sucesso')
+        flash("Pedido finalizado!")
     else:
-        print('PROBLEMA na finalização do pedido')
+        flash("Erro ao finalizar pedido!")
     session.pop('pedidoId')
     return main_page()
 
 @app.route('/remover-livro-pedido/<livroId>')
 def retirar_item(livroId):
     if mt.remover_livro_pedido(livroId, session.get('pedidoId')) == 200:
-        print('Livro removido')
+        flash("Livro removido do carrinho!")
     else:
-        print('PROBLEMA ao remover o livro')
+        flash("Erro ao remover do carrinho, tente novamente!")
     return car_page()
 
 if __name__ == '__main__':
