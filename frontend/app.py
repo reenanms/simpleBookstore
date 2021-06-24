@@ -1,7 +1,9 @@
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, request
 from flask_cors import CORS
 from flask_session import Session
+from forms import form_cadastro_livro
 import method as mt
+
 
 app = Flask(__name__)
 app.secret_key = 'BAD_SECRET_KEY'
@@ -35,12 +37,17 @@ def acesso_vendedor():
 
 @app.route('/pedidos')
 def pedidos():
-    return render_template('pedidos.html')
+    pedidos_finalizados = mt.get_pedidos_finalizados()
+    return render_template('pedidos.html', pedidos_finalizados=pedidos_finalizados)
 
 
 @app.route('/cadastro')
 def cadastro_livro():
-    return render_template('cadastro_livro.html')
+    form = form_cadastro_livro()
+    if form.is_submitted():
+        res = request.form
+        return render_template('cadastro_livro.html', res=res)
+    return render_template('cadastro_livro.html', form=form)
 
 
 @app.route('/add-car/<livroId>')

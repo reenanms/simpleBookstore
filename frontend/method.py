@@ -88,3 +88,9 @@ def add_pedido(id):
 def get_pedido_id():
     #fazer get do id do pedido
     return ('1')
+
+def get_pedidos_finalizados():
+    p = requests.get(url=URL + '/pedido/finalizados')
+    pedidos_finalizados = p.json()
+    print(pedidos_finalizados)
+    return pedidos_finalizados
