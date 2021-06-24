@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request
+from flask import Flask, render_template, session, request, flash
 from flask_cors import CORS
 from flask_session import Session
 from forms import form_cadastro_livro
@@ -57,12 +57,9 @@ def add_car(livroId):
         session['pedidoId'] = mt.get_pedido_id()
     if session.get('pedidoId'):
         if mt.add_pedido(livroId, session.get('pedidoId')) == 200:
-            print('Adicionado ao pedido com sucesso')
-
+            flash("Livro adicionado ao carrinho!")
         else:
-            print('PROBLEMA ao adicionar ao pedido')
-
-
+            flash("Erro ao adicionar livro ao carrinho!")
     return main_page()
 
 
