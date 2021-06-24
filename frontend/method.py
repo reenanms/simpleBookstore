@@ -87,8 +87,31 @@ def get_pedido_id():
     print(pedido.id)
     return (pedido.id)
 
-
 def add_pedido(id):
     r = requests.post(url = URL + '/pedido/' + session.get('pedidoId') + '/add/' + id)
+    return r.status_code
+
+def get_car_itens(pedidoId):
+    itens = [{
+        "cliente": {
+            "nome": "nome do cliente"
+        },
+        "dataPedido": "Wed, 16 Jun 2021 22:18:05 GMT",
+        "finalizado": 'true',
+        "id": 1,
+        "livros": [
+            {
+                "id": 1,
+                "preco": 1.11,
+                "quantidade": 1,
+                "titulo": "titulo do livro"
+            }
+        ]
+    }]
+
+    return itens
+
+def finalizar_pedido(pedidoId):
+    r = requests.post(url=URL + '/pedido/' + pedidoId + '/finalizar')
     return r.status_code
 

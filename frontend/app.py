@@ -25,7 +25,8 @@ def about_page():
 
 @app.route('/carrinho')
 def car_page():
-    return render_template('carrinho.html')
+    itens = mt.get_car_itens(session.get('pedidoId'))
+    return render_template('carrinho.html', itens=itens)
 
 
 @app.route('/vendedor')
@@ -56,6 +57,14 @@ def add_car(livroId):
     return main_page()
 
 
+@app.route('/finalizar-pedido')
+def finalizar_pedido():
+    if mt.finalizar_pedido(session.get('pedidoId')) == 200:
+        print('Pedido Finalizado com sucesso')
+    else:
+        print('PROBLEMA na finalização do pedido')
+    session.pop(session.get('pedidoId'))
+    return main_page()
 
 
 if __name__ == '__main__':

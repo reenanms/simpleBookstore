@@ -2,13 +2,39 @@
 {% set active_page = "carrinho" %}
 
 {% block content %}
-    <h4>Carrinho</h4>
-    <hr>
-
-    <p>
-        Carrinho
-    </p>
+    <h4>Meu Carrinho</h4>
 
     <hr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Titulo</th>
+              <th scope="col">Quantidade</th>
+              <th scope="col">Preço Unitario</th>
+              <th scope="col">Preço Total</th>
+              <th scope="col"> </th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for item in itens %}
+            {% for livro in item.livros %}
+            <tr>
+              <th>{{ livro.titulo }}</th>
+              <td>{{ livro.quantidade }}</td>
+              <td>R$ {{ livro.preco }}</td>
+              <td>R$ {{livro.preco * livro.quantidade}}</td>
+              <td><button class="btn btn-light" type="button">Retirar</button></td>
+            </tr>
+            {% endfor %}
+          {% endfor %}
+          </tbody>
+        </table>
+    </hr>
+    <hr>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn-dark mb-3" type="button" href="{{ url_for('finalizar_pedido')}}" method="post">Finalizar Compra</a>
+        </div>
+    </hr>
+
 
 {% endblock %}
