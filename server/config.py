@@ -1,1 +1,1 @@
-CONNECTION_STRING = 'mariadb+mariadbconnector://root:Integra%4021@127.0.0.1:3306/livrariaVirtual'
+CONNECTION_STRING = 'mysql+pymysql://root:Integra%4021@127.0.0.1:3306/livrariaVirtual'

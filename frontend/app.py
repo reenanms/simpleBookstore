@@ -56,10 +56,12 @@ def add_car(livroId):
     if not session.get('pedidoId'):
         session['pedidoId'] = mt.get_pedido_id()
     if session.get('pedidoId'):
-        if mt.add_pedido(livroId) == 200:
+        if mt.add_pedido(livroId, session.get('pedidoId')) == 200:
             print('Adicionado ao pedido com sucesso')
+
         else:
             print('PROBLEMA ao adicionar ao pedido')
+
 
     return main_page()
 
@@ -70,7 +72,7 @@ def finalizar_pedido():
         print('Pedido Finalizado com sucesso')
     else:
         print('PROBLEMA na finalização do pedido')
-    session.pop(session.get('pedidoId'))
+    session.pop('pedidoId')
     return main_page()
 
 @app.route('/remover-livro-pedido/<livroId>')

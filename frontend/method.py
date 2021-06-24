@@ -4,7 +4,7 @@ URL = 'http://localhost:3000'
 
 
 def get_livros():
-    '''
+
     r = requests.get(url = URL+'/livro')
     livros = r.json()
     print(livros)
@@ -53,14 +53,14 @@ def get_livros():
         }
     ]
     return livros
-
+'''
 
 def get_topvendas():
-    '''
+
     r = requests.get(url = URL+'/livro/maisVendidos')
-    top = r.json()
-    print(top)
-    return top
+    topvendas = r.json()
+    print(topvendas)
+    return topvendas
     '''
     topvendas = [
         {
@@ -80,17 +80,24 @@ def get_topvendas():
         }
     ]
     return topvendas
+    '''
 
 
 def get_pedido_id():
+    print('get pedido id')
     r = requests.post(url=URL + '/pedido')
+    print('get pedido id 2')
     pedido = r.json()
-    print(pedido.id)
-    return (pedido.id)
+    print(pedido['id'])
+    return (pedido['id'])
 
 
-def add_pedido(id):
-    r = requests.post(url=URL + '/pedido/' + session.get('pedidoId') + '/add/' + id)
+def add_pedido(id, pedidoId):
+
+    print('add pedido')
+    r = requests.post(url=URL + '/pedido/' + str(pedidoId) + '/add/' + str(id))
+    print('add pedido 2')
+    print(r)
     return r.status_code
 
 
@@ -123,11 +130,11 @@ def get_car_itens(pedidoId):
 
 
 def finalizar_pedido(pedidoId):
-    r = requests.post(url=URL + '/pedido/' + pedidoId + '/finalizar')
+    r = requests.post(url=URL + '/pedido/' + str(pedidoId) + '/finalizar')
     return r.status_code
 
 
 def remover_livro_pedido(livroId, sessionId):
-    r = requests.post(url=URL + '/pedido/' + sessionId + '/rem/' + livroId)
+    r = requests.post(url=URL + '/pedido/' + str(sessionId) + '/rem/' + str(livroId))
     return r.status_code
 

@@ -132,8 +132,8 @@ class PedidoController:
         if (pedido is None):
             raise Exception(f"Pedido {id} não existe")
 
-        if (pedido.idCliente is None):
-            raise Exception(f"Pedido não possui cliente")
+        #if (pedido.idCliente is None):
+        #    raise Exception(f"Pedido não possui cliente")
 
         pedido.confirmacaoPagamento = True
 
