@@ -7,6 +7,7 @@ def get_livros():
     print("Get livros")
     r = requests.get(url = URL+'/livro')
     if r.status_code != 200:
+        print("Erro na requisição dos livros")
         print(r)
     livros = r.json()
     print(livros)
@@ -73,7 +74,15 @@ def get_pedidos_finalizados():
 
 
 def get_car_itens(pedidoId):
-    itens = [{
+    print("Get itens do carrinho ")
+    r = requests.get(url = URL+'/pedido/'+str(pedidoId))
+    if r.status_code != 200:
+        print("Erro na requisicao")
+        print(r)
+    livros = r.json()
+    print(livros)
+    return livros
+    '''    itens = [{
         "cliente": {
             "nome": "nome do cliente"
         },
@@ -88,7 +97,7 @@ def get_car_itens(pedidoId):
                 "titulo": "titulo do livro"
             }
         ]
-    }]
+    }]'''
 
     return itens
 
