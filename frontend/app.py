@@ -27,7 +27,8 @@ def about_page():
 
 @app.route('/carrinho')
 def car_page():
-    return render_template('carrinho.html')
+    itens = mt.get_car_itens(session.get('pedidoId'))
+    return render_template('carrinho.html', itens=itens)
 
 
 @app.route('/vendedor')
@@ -55,7 +56,7 @@ def add_car(livroId):
     if not session.get('pedidoId'):
         session['pedidoId'] = mt.get_pedido_id()
     if session.get('pedidoId'):
-        if mt.add_pedido(livroId) == 'ok':
+        if mt.add_pedido(livroId) == 200:
             print('Adicionado ao pedido com sucesso')
         else:
             print('PROBLEMA ao adicionar ao pedido')
@@ -63,7 +64,22 @@ def add_car(livroId):
     return main_page()
 
 
+@app.route('/finalizar-pedido')
+def finalizar_pedido():
+    if mt.finalizar_pedido(session.get('pedidoId')) == 200:
+        print('Pedido Finalizado com sucesso')
+    else:
+        print('PROBLEMA na finalização do pedido')
+    session.pop(session.get('pedidoId'))
+    return main_page()
 
+@app.route('/remover-livro-pedido/<livroId>')
+def retirar_item(livroId):
+    if mt.remover_livro_pedido(livroId, session.get('pedidoId')) == 200:
+        print('Livro removido')
+    else:
+        print('PROBLEMA ao remover o livro')
+    return car_page()
 
 if __name__ == '__main__':
     app.run()
