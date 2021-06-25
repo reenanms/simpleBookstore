@@ -36,10 +36,17 @@ class PedidoController:
     def mapPedidoLivro(self, pedidoLivro):
         return {
             "id": pedidoLivro.idLivro,
-            "titulo": "",
+            "titulo": self.getLivro(pedidoLivro.idLivro).titulo,
             "quantidade": pedidoLivro.quantidade,
             "preco": pedidoLivro.preco
         }
+
+    def getLivro(self, idLivro):
+        session = NewSession()
+        livro = session.query(Livro).get(idLivro)
+        if (livro is None):
+            raise Exception(f"Livro {idLivro} não existe")
+        return livro
 
     def getAll(self):
         session = NewSession()

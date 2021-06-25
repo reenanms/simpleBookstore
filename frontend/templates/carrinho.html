@@ -16,8 +16,8 @@
             </tr>
           </thead>
           <tbody>
-          {% for item in itens %}
-            {% for livro in item.livros %}
+
+            {% for livro in itens.livros %}
             <tr>
               <th>{{ livro.titulo }}</th>
               <td>{{ livro.quantidade }}</td>
@@ -26,7 +26,7 @@
               <td><a class="btn btn-light" type="button"  href="{{ url_for('retirar_item', livroId = livro.id)}}" method="post" >Retirar</a></td>
             </tr>
             {% endfor %}
-          {% endfor %}
+
           </tbody>
         </table>
     </hr>

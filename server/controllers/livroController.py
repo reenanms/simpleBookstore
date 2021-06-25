@@ -51,7 +51,7 @@ class LivroController:
         livro = session.query(Livro).get(id)
         if (livro is None):
             raise Exception(f"Livro {id} não existe")
-        return self.map(livro);
+        return self.map(livro)
 
     def create(self, isbn, titulo, autor, anoPublicacao, estoque, preco):
         session = NewSession()

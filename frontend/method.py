@@ -82,7 +82,6 @@ def get_car_itens(pedidoId):
     livros = r.json()
     print(livros)
     return livros
-    #itens
 
 
 def finalizar_pedido(pedidoId):

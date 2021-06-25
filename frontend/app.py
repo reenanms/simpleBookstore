@@ -28,6 +28,8 @@ def about_page():
 @app.route('/carrinho')
 def car_page():
     itens = mt.get_car_itens(session.get('pedidoId'))
+    print('print dos iitens do carrinho')
+    print(itens)
     return render_template('carrinho.html', itens=itens)
 
 @app.route('/vendedor')
