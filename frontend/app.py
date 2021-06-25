@@ -30,7 +30,6 @@ def car_page():
     itens = mt.get_car_itens(session.get('pedidoId'))
     return render_template('carrinho.html', itens=itens)
 
-
 @app.route('/vendedor')
 def acesso_vendedor():
     return render_template('acesso_vendedor.html')

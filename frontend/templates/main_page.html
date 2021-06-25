@@ -4,10 +4,13 @@
 {% block content %}
 
     <div class="container text-dark text-center">
-        <h2>Livros top vendas</h2>
+        <h2>Livros mais vendidos</h2>
     </div>
     <hr>
-        <div class="card-columns">
+
+
+
+        <div class="card-group">
             {% for top in topvendas %}
             <div class="card text-center text-dark border-secundary">
                 <img src="https://practicelanguagesonline.files.wordpress.com/2021/02/top-10-books-every-college-student-read-1024x640-1.jpeg?w=810&h=580&crop=1" class="card-img-top" alt="...">
@@ -18,11 +21,14 @@
             </div>
             {% endfor %}
         </div>
+
     <hr>
+    </br>
+    </br>
 
 
     <div class="container text-dark text-center">
-        <h2>Todos os livros disponível</h2>
+        <h2>Todos os livros disponíveis</h2>
     </div>
     <hr>
         <div class="card-columns row-cols-3">
@@ -32,12 +38,12 @@
                 <div class="card-body">
                     <h5 class="card-title">{{livro.titulo}}</h5>
                     <h6 class="card-subtitle">R$ {{livro.preco}}</h6>
-                    <p class="card-text">{{livro.autor}},{{livro.anoPublicacao}}.</p>
+                    <p class="card-text">{{livro.autor}}, {{livro.anoPublicacao}}.</p>
                     <a class="btn btn-primary btn-dark" href="{{ url_for('add_car', livroId = livro.id)}}" method="post">Adicionar ao carrinho</a>
                 </div>
             </div>
             {% endfor %}
         </div>
-    <hr>
+
 
 {% endblock %}

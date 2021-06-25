@@ -82,24 +82,7 @@ def get_car_itens(pedidoId):
     livros = r.json()
     print(livros)
     return livros
-    '''    itens = [{
-        "cliente": {
-            "nome": "nome do cliente"
-        },
-        "dataPedido": "Wed, 16 Jun 2021 22:18:05 GMT",
-        "finalizado": 'true',
-        "id": 1,
-        "livros": [
-            {
-                "id": 1,
-                "preco": 1.11,
-                "quantidade": 1,
-                "titulo": "titulo do livro"
-            }
-        ]
-    }]'''
-
-    return itens
+    #itens
 
 
 def finalizar_pedido(pedidoId):

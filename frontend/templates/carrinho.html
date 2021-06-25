@@ -22,7 +22,7 @@
               <th>{{ livro.titulo }}</th>
               <td>{{ livro.quantidade }}</td>
               <td>R$ {{ livro.preco }}</td>
-              <td>R$ {{livro.preco * livro.quantidade}}</td>
+              <td>R$ {{ livro.preco * livro.quantidade }}</td>
               <td><a class="btn btn-light" type="button"  href="{{ url_for('retirar_item', livroId = livro.id)}}" method="post" >Retirar</a></td>
             </tr>
             {% endfor %}
@@ -34,7 +34,6 @@
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-dark mb-3" type="button" href="{{ url_for('finalizar_pedido')}}" method="post">Finalizar Compra</a>
         </div>
-    </hr>
 
 
 {% endblock %}

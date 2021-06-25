@@ -3,8 +3,8 @@
     <head>
         <title>Livraria Virtual</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     </head>
+
     <body>
 
     <div class="d-flex flex-column">
@@ -17,20 +17,16 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a href="livros" class="nav-link text-white+ {{'active' if active_page == 'livros'}}" >Livros</a>
+                        <a href="/livros" class="nav-link text-white+ {{'active' if active_page == 'livros'}}" >Livros</a>
                     </li>
                     <li class="nav-item">
-                        <a href="sobre" class="nav-link text-white+ {{'active' if active_page == 'sobre'}}">Sobre</a>
+                        <a href="/sobre" class="nav-link text-white+ {{'active' if active_page == 'sobre'}}">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a href="carrinho" class="nav-link text-white+ {{'active' if active_page == 'carrinho'}}">Carrinho</a>
+                        <a href="/carrinho" class="nav-link text-white+ {{'active' if active_page == 'carrinho'}}">Carrinho</a>
                     </li>
-                </ul>
-            </div>
-            <div class="navbar-nav flex-grow-1 align-self-end">
-                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="vendedor" class="nav-link text-white+ {{'active' if active_page == 'vendedor'}}">Área do vendedor</a>
+                        <a href="/vendedor" class="nav-link text-white+ {{'active' if active_page == 'vendedor'}}">Área do vendedor</a>
                     </li>
                 </ul>
             </div>
@@ -48,7 +44,14 @@
             {% block content %}{% endblock %}
          </div>
      </main>
+    </div>
 
+
+    </br>
+    </br>
+    </br>
+
+     <!--- >
      <footer class="footer border-top text-left text-dark bg-light">
          <div class="container">
             <div class="row py-3">
@@ -62,6 +65,7 @@
          </div>
      </footer>
     </div>
+    </!-->
 
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
