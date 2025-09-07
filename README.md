@@ -1,56 +1,64 @@
-# Livraria Virtual
-Sistema de controle de pedidos de uma livraria.
+# Virtual Bookstore
 
+Virtual Bookstore is a web-based system designed to manage bookstore orders, including customer registration, book catalog management, and order processing. The platform provides a simple interface for both sellers and buyers, supporting features such as adding books, viewing best sellers, and tracking orders from creation to completion.
 
-## Requisitos para rodar
+This project was developed as part of a university assessment, demonstrating the integration of backend and frontend technologies to solve real-world business problems in a bookstore environment.
 
-- Phythos 3
+## Technologies Used
+
+- Python 3
+- Flask (Backend & Frontend)
+- SQLAlchemy (ORM)
+- MariaDB (Database)
+- Docker
+- HTML, CSS (Frontend)
+
+## Requirements
+
+- Python 3
 - Docker
 
+## Setting Up the Environment
 
-
-## Montando ambiente
-
-* Rodar o mariadb
+* Run MariaDB
 ```
- docker run -p 127.0.0.1:3306:3306 --name mariadb --restart unless-stopped -e MARIADB_ROOT_PASSWORD=SENH4 -d mariadb:latest
+docker run -p 127.0.0.1:3306:3306 --name mariadb --restart unless-stopped -e MARIADB_ROOT_PASSWORD=SENH4 -d mariadb:latest
 ```
 
-* Criar o banco de dados ([livrariaVirtual.sql](database/livrariaVirtual.sql))
+* Create the database
+Use the script [`database/livrariaVirtual.sql`](database/livrariaVirtual.sql).
 
-* Instalar as dependências
+* Install dependencies
 ```
 pip3 install mariadb SQLAlchemy Flask requests
 ```
 
-* Rodar o serviço do backend (apenas para Windows, para outro sistema operaciona [clique aqui](https://flask.palletsprojects.com/en/2.0.x/quickstart/#a-minimal-application))
+* Run the backend service (Windows only. For other OS, see [Flask Quickstart](https://flask.palletsprojects.com/en/2.0.x/quickstart/#a-minimal-application))
 ```
 server\run.bat
 ```
 
-* Rodar  o serviço do frontend (apenas para Windows, para outro sistema operaciona [clique aqui](https://flask.palletsprojects.com/en/2.0.x/quickstart/#a-minimal-application))
+* Run the frontend service (Windows only. For other OS, see [Flask Quickstart](https://flask.palletsprojects.com/en/2.0.x/quickstart/#a-minimal-application))
 ```
 frontend\run.bat
 ```
 
+## Backend Routes
 
+### Clients
+- `<UrlApi>/cliente`
 
-## Rotas do backend
-
-### De clientes
-- \<UrlApi\>/cliente
-
-Rota _POST_ que espera um requet json no seguinte formato:
-``` json
+**POST**: Expects JSON:
+```json
 {
-	"cpf": "12345678901",
-	"nome": "nome do cliente"
+  "cpf": "12345678901",
+  "nome": "client name"
 }
 ```
 
-- \<UrlApi\>/cliente/\<cpf\>
+- `<UrlApi>/cliente/<cpf>`
 
-Rota _GET_ com response json no seguinte formato:
+**GET**: Returns JSON:
 ``` json
 {
 	"cpf": "12345678901",
@@ -59,10 +67,10 @@ Rota _GET_ com response json no seguinte formato:
 }
 ```
 
-### De livros
-- \<UrlApi\>/livro
+### Books
+- `<UrlApi>/livro`
 
-Rota _POST_ que espera um requet json no seguinte formato:
+**POST**: Receive JSON of the book.
 ``` json
 {
   "anoPublicacao": 2021,
@@ -70,10 +78,10 @@ Rota _POST_ que espera um requet json no seguinte formato:
   "estoque": 1,
   "isbn": "12345",
   "preco": 1.11,
-  "titulo": "titulo do livro"
+  "titulo": "book title"
 }
 ```
-Com response json no seguinte formato:
+Response a JSON with the created book.
 ``` json
 {
   "anoPublicacao": 2021,
@@ -82,69 +90,69 @@ Com response json no seguinte formato:
   "id": 1,
   "isbn": "12345",
   "preco": 1.11,
-  "titulo": "titulo do livro"
+  "titulo": "book title"
 }
 ```
 
-- \<UrlApi\>/livro
+- `<UrlApi>/livro`
 
-Rota _GET_ com response json no seguinte formato:
+**GET**: Returns JSON array of books.
 ``` json
 [
   {
     "anoPublicacao": 2021,
-    "autor": "nome do autor",
+    "autor": "author name",
     "id": 1,
     "isbn": "1234567890123",
     "preco":  1.11,
-    "titulo": "titulo do livro 1"
+    "titulo": "book title 1"
   },
   {
     "anoPublicacao": 2021,
-    "autor": "nome do autor",
+    "autor": "author name",
     "id": 2,
     "isbn": "1234567890123",
     "preco": 1.11,
-    "titulo": "titulo do livro 2"
+    "titulo": "book title 2"
   }
 ]
 ```
 
-- \<UrlApi\>/livro/maisVendidos
+- `<UrlApi>/livro/maisVendidos`
 
-Rota _GET_ com response json no seguinte formato:
+**GET**: Returns JSON array of best-selling books.
 ``` json
 [
   {
-    "autor": "nome do autor",
+    "autor": "author name",
     "quantidade": 10,
-    "titulo": "titulo do livro mais vendido"
+    "titulo": "best-selling book title"
   },
   {
-    "autor": "nome do autor",
+    "autor": "author name",
     "quantidade": 8,
-    "titulo": "titulo do segundo livro mais vendido"
+    "titulo": "second best-selling book title"
   }
 ]
 ```
 
-- \<UrlApi\>/livro/\<idLivro\>
+- `<UrlApi>/livro/<bookId>`
 
-Rota _GET_ com response json no seguinte formato:
+**GET**: Returns JSON for a specific book.
 ``` json
 {
-  "autor": "nome do autor",
+  "autor": "author name",
   "estoque": 1,
   "id": 1,
   "preco": 1.11,
-  "titulo": "titulo do livro"
+  "titulo": "book title"
 }
 ```
 
-### De pedidos
-- \<UrlApi\>/pedido
+### Orders
+- `<UrlApi>/pedido`
 
-Rota _POST_ com response json no seguinte formato:
+**POST**: Returns JSON with order info.
 ``` json
 {
   "dataPedido": "Wed, 23 Jun 2021 00:42:34 GMT",
@@ -152,25 +160,25 @@ Rota _POST_ com response json no seguinte formato:
 }
 ```
 
-- \<UrlApi\>/pedido/\<idPedido\>/add/\<idLivro\>
+- `<UrlApi>/pedido/<orderId>/add/<bookId>`
 
-Rota _POST_ 
+**POST**: Add book to order.
 
-- \<UrlApi\>/pedido/\<idPedido\>/rem/\<idLivro\>
+- `<UrlApi>/pedido/<orderId>/rem/<bookId>`
 
-Rota _POST_ 
+**POST**: Remove book from order.
 
-- \<UrlApi\>/pedido/\<idPedido\>/cli/\<cpf\>
+- `<UrlApi>/pedido/<orderId>/cli/<cpf>`
 
-Rota _POST_ 
+**POST**: Assign client to order.
 
-- \<UrlApi\>/pedido/\<idPedido\>/finalizar
+- `<UrlApi>/pedido/<orderId>/finalizar`
 
-Rota _POST_ 
+**POST**: Finalize order.
 
-- \<UrlApi\>/pedido
+- `<UrlApi>/pedido`
 
-Rota _GET_ com response json no seguinte formato:
+**GET**: Returns JSON array of orders.
 ``` json
 [
   {
@@ -188,9 +196,9 @@ Rota _GET_ com response json no seguinte formato:
 ]
 ```
 
-- \<UrlApi\>/pedido/finalizados
+- `<UrlApi>/pedido/finalizados`
 
-Rota _GET_ com response json no seguinte formato:
+**GET**: Returns JSON array of finalized orders.
 ``` json
 [
   {
@@ -208,13 +216,13 @@ Rota _GET_ com response json no seguinte formato:
 ]
 ```
 
-- \<UrlApi\>/pedido/\<idPedido\>
+- `<UrlApi>/pedido/<orderId>`
 
-Rota _GET_ com response json no seguinte formato:
+**GET**: Returns JSON with order details.
 ``` json
 {
   "cliente": {
-    "nome": "nome do cliente"
+    "nome": "client name"
   },
   "dataPedido": "Wed, 16 Jun 2021 22:18:05 GMT",
   "finalizado": true,
@@ -224,13 +232,24 @@ Rota _GET_ com response json no seguinte formato:
       "id": 1,
       "preco": 1.11,
       "quantidade": 1,
-      "titulo": "titulo do livro"
+      "titulo": "book title"
     }
   ]
 }
 ```
 
+## Entity-Relationship Model
+![Diagram](database/ER.jpeg)
 
+## Project Structure
 
-## Modelo de entidade relacionamento
-![Diagrama](database/ER.jpeg)
+- `database/`: Database scripts and ER diagram
+- `frontend/`: Frontend Flask app and templates
+- `server/`: Backend Flask API and business logic
+
+## Contributors
+
+- @marcia-santos — Márcia Cunha dos Santos
+- @francielekreff — Franciele Kreff
+- @reenanms — Renan Martins
+
